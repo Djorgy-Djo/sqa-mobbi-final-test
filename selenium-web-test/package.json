@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "test": "mocha --no-timeouts main.test.js",
+    "testvisual": "mocha --no-timeouts **/visual.test.js"
+  },
   "dependencies": {
     "chai-image": "^3.0.0",
     "selenium-webdriver": "^4.13.0"
