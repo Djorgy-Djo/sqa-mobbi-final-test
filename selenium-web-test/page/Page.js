@@ -6,7 +6,7 @@ class Page {
   }
 
   async openUrl(path = "/") {
-    await this.driver.get("https://sonderlab.co" + path);
+    await this.driver.get("https://heymale.id" + path);
   }
 }
 

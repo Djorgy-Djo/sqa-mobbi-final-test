@@ -6,16 +6,25 @@ class LoginPage extends Page {
     super(driver);
   }
 
-  usernameEl = By.css("#customer_email");
-  passwordEl = By.css("#customer_password");
-  loginBtnEl = By.css("#customer_login .action-bottom .btn");
+  usernameEl = By.css("#email");
+  passwordEl = By.css("#password");
+  loginBtnEl = By.xpath(
+    "//*[@id='root']/div/div/div/div[9]/section/div[2]/button"
+  );
   errorEl = By.css(".errors");
 
   async openPage() {
-    await this.openUrl("/account/login");
+    await this.openUrl();
   }
 
   async loginProcess(username, password) {
+    await this.driver
+      .findElement(
+        By.xpath("/html/body/div/div/div/div/div[2]/nav/div[2]/div[1]/div/img")
+      )
+      .click();
+
+    await new Promise((resolve) => setTimeout(resolve, 10000));
     await this.driver.findElement(this.usernameEl).sendKeys(username);
     await this.driver.findElement(this.passwordEl).sendKeys(password);
     await this.driver.findElement(this.loginBtnEl).click();

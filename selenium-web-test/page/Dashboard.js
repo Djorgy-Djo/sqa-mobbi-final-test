@@ -7,49 +7,27 @@ class Dashboard extends Page {
   }
 
   async openPage() {
-    this.openUrl("/collections/new-arrivals");
+    this.openUrl();
+    new Promise((resolve) => setTimeout(resolve, 15000));
   }
 
-  async openNewArrivals() {
-    let el = await this.driver.findElement(
-      By.xpath("//*[@id='main-navigation-wrapper']/ul/li[1]/a")
-    );
-    await this.driver.wait(until.elementLocated(el), 1000);
-    await el.click();
-  }
+  hotItems = By.xpath(
+    "//*[@id='root']/div/div/div/div[2]/nav/div[1]/div[2]/div/div[1]/a/p"
+  );
+  availItems = By.xpath(
+    "//*[@id='root']/div/div/div/div[2]/nav/div[1]/div[2]/div/div[2]/a/p"
+  );
+  accessories = By.xpath(
+    "//*[@id='root']/div/div/div/div[2]/nav/div[1]/div[2]/div/div[4]/a/p"
+  );
 
-  async addToCartNewArrivals() {
-    await this.driver
-      .findElement(
-        By.xpath(
-          "/html/body/div[1]/div[4]/div[1]/div/div/div[3]/div/div/div[1]/div/div[2]/a/span[1]"
-        )
-      )
-      .click();
-
-    await this.driver.findElement(By.xpath("//*[@id='purchase']")).click();
-
-    await this.driver
-      .findElement(
-        By.xpath("//*[@id='cartSlideoutWrapper']/div[5]/div[4]/button")
-      )
-      .click();
-
-    let popUp = await this.driver.findElement(
-      By.xpath("//*[@id='block-actions']/div[2]/div")
-    );
-    await this.driver.wait(until.elementLocated(popUp), 10000);
-    await popUp.click();
-  }
-
-  async openRunwayCollection() {
-    await this.driver
-      .findElement(By.xpath("/li[1]/a[text()='Runway Collection']"))
-      .click();
-  }
-
-  async openSonderExclusive() {
-    await this.driver.findElement(By.xpath());
+  async openMenuNav() {
+    new Promise((resolve) => setTimeout(resolve, 15000));
+    await this.driver.findElement(this.hotItems).click();
+    new Promise((resolve) => setTimeout(resolve, 15000));
+    await this.driver.findElement(this.availItems).click();
+    new Promise((resolve) => setTimeout(resolve, 15000));
+    await this.driver.findElement(this.accessories).click();
   }
 }
 

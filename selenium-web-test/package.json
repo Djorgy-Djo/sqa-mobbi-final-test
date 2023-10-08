@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "test": "mocha --no-timeouts main.test.js",
+    "testLogin": "mocha --no-timeouts **/FT_001_Login.test.js",
+    "testNavBar": "mocha --no-timeouts **/FT_002_NavMenu.test.js",
     "testvisual": "mocha --no-timeouts **/visual.test.js"
   },
   "dependencies": {
