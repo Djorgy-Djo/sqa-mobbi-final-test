@@ -11,23 +11,42 @@ class Dashboard extends Page {
     new Promise((resolve) => setTimeout(resolve, 15000));
   }
 
-  hotItems = By.xpath(
-    "//*[@id='root']/div/div/div/div[2]/nav/div[1]/div[2]/div/div[1]/a/p"
+  navBarSelectors = [
+    By.xpath(
+      "//*[@id='root']/div/div/div/div[2]/nav/div[1]/div[2]/div/div[0]/a/p"
+    ),
+    By.xpath(
+      "//*[@id='root']/div/div/div/div[2]/nav/div[1]/div[2]/div/div[1]/a/p"
+    ),
+    By.xpath(
+      "//*[@id='root']/div/div/div/div[2]/nav/div[1]/div[2]/div/div[2]/a/p"
+    ),
+    By.xpath(
+      "//*[@id='root']/div/div/div/div[2]/nav/div[1]/div[2]/div/div[4]/a/p"
+    ),
+    By.xpath(
+      "//*[@id='root']/div/div/div/div[2]/nav/div[1]/div[2]/div/div[6]/a/p"
+    ),
+  ];
+  searchSelector = By.xpath(
+    "//*[@id='root']/div/div/div/div[2]/nav/div[1]/div[2]/div/div[8]/p"
   );
-  availItems = By.xpath(
-    "//*[@id='root']/div/div/div/div[2]/nav/div[1]/div[2]/div/div[2]/a/p"
-  );
-  accessories = By.xpath(
-    "//*[@id='root']/div/div/div/div[2]/nav/div[1]/div[2]/div/div[4]/a/p"
+  searchBarSelector = By.css("#search");
+  searchBtnSelector = By.xpath(
+    "//*[@id='root']/div/div/div/div[3]/section/div[2]/div/div/div/div"
   );
 
-  async openMenuNav() {
-    new Promise((resolve) => setTimeout(resolve, 15000));
-    await this.driver.findElement(this.hotItems).click();
-    new Promise((resolve) => setTimeout(resolve, 15000));
-    await this.driver.findElement(this.availItems).click();
-    new Promise((resolve) => setTimeout(resolve, 15000));
-    await this.driver.findElement(this.accessories).click();
+  async openNavMenu(number) {
+    // await new Promise((done) => setTimeout(done, 10000));
+    await this.driver.findElement(this.navBarSelectors[number]).click();
+  }
+
+  async searchProcess(key) {
+    await this.driver.findElement(this.searchSelector).click();
+    await new Promise((done) => setTimeout(done, 5000));
+    await this.driver.findElement(this.searchBarSelector).sendKeys(key);
+    await new Promise((done) => setTimeout(done, 5000));
+    await this.driver.findElement(this.searchBtnSelector).click();
   }
 }
 
