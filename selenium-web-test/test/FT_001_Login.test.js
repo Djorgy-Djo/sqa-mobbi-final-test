@@ -18,7 +18,7 @@ describe("HeyMale Web Test", function () {
     it("berhasil login, masuk ke dashboard", async function () {
       await loginPage.openPage();
       await loginPage.loginProcess("marquezelio28@gmail.com", "Testing123");
-      const url = driver.getCurrentUrl();
+      const url = await driver.getCurrentUrl();
       expect(url).to.equal("https://heymale.id/");
     });
   });
