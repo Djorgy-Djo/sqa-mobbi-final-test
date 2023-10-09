@@ -8,7 +8,7 @@ class Dashboard extends Page {
 
   async openPage() {
     this.openUrl();
-    new Promise((resolve) => setTimeout(resolve, 15000));
+    new Promise((resolve) => setTimeout(resolve, 10000));
   }
 
   navBarSelectors = [
@@ -38,7 +38,9 @@ class Dashboard extends Page {
 
   async openNavMenu(number) {
     // await new Promise((done) => setTimeout(done, 10000));
-    await this.driver.findElement(this.navBarSelectors[number]).click();
+    let navBtn = await this.driver.findElement(this.navBarSelectors[number]);
+    await this.driver.wait(until.elementIsVisible(navBtn, 10000));
+    await navBtn.click();
   }
 
   async searchProcess(key) {
@@ -47,6 +49,17 @@ class Dashboard extends Page {
     await this.driver.findElement(this.searchBarSelector).sendKeys(key);
     await new Promise((done) => setTimeout(done, 5000));
     await this.driver.findElement(this.searchBtnSelector).click();
+  }
+
+  async addingItem() {
+    await new Promise((done) => setTimeout(done, 10000));
+    await this.driver
+      .findElement(
+        By.xpath(
+          "//*[@id='root']/div/div/div/div[7]/div/div[2]/div/div[2]/div[5]/div[1]/img"
+        )
+      )
+      .click();
   }
 }
 
