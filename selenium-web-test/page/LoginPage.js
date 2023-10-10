@@ -17,6 +17,22 @@ class LoginPage extends Page {
     await this.openUrl();
   }
 
+  async clickLogin() {
+    await this.driver
+      .findElement(
+        By.xpath("/html/body/div/div/div/div/div[2]/nav/div[2]/div[1]/div/img")
+      )
+      .click();
+  }
+
+  async closeModalLogin() {
+    await this.driver
+      .findElement(
+        By.xpath("//*[@id='root']/div/div/div/div[9]/section/div[1]/svg")
+      )
+      .click();
+  }
+
   async loginProcess(username, password) {
     await this.driver
       .findElement(
@@ -24,7 +40,7 @@ class LoginPage extends Page {
       )
       .click();
 
-    await new Promise((resolve) => setTimeout(resolve, 10000));
+    await new Promise((resolve) => setTimeout(resolve, 5000));
     await this.driver.findElement(this.usernameEl).sendKeys(username);
     await this.driver.findElement(this.passwordEl).sendKeys(password);
     await this.driver.findElement(this.loginBtnEl).click();

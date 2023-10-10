@@ -1,7 +1,7 @@
 const { By, until } = require("selenium-webdriver");
 const Page = require("./Page");
 
-class MemberPage extends Page() {
+class MemberPage extends Page {
   constructor(driver) {
     super(driver);
   }

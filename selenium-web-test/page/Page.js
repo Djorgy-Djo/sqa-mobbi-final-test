@@ -9,13 +9,13 @@ class Page {
     await this.driver.get("https://heymale.id" + path);
   }
 
-  async getTextByCss(selector) {
-    return await this.driver.findElement(By.css(selector)).getText();
+  async getTextByXpath(selector) {
+    return await this.driver.findElement(By.xpath(selector)).getText();
   }
 
-  async getAttributeByCss(selector, attribute) {
+  async getAttributeByXpath(selector, attribute) {
     return await this.driver
-      .findElement(By.css(selector))
+      .findElement(By.xpath(selector))
       .getAttribute(attribute);
   }
 }

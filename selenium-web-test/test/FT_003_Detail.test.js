@@ -1,4 +1,4 @@
-const { WebDriver } = require("selenium-webdriver");
+const { WebDriver, By } = require("selenium-webdriver");
 const chai = require("chai");
 const setupDriver = require("../utils/setupDriver");
 const DetailProductPage = require("../page/DetailProductPage");
@@ -26,12 +26,20 @@ describe("HeyMale.id web test", function () {
   describe("Mengklik tombol add to bag", function () {
     it("berhasil menambahkan produk ke cart", async function () {
       await detailProductPage.clickAddtoBag();
+      const text = await detailProductPage.getTextByXpath(
+        "//*[@id='root']/div/div/div/div[2]/nav/div[2]/div[2]/div[1]"
+      );
     });
+    expect(text).to.include(1);
   });
 
   describe("Mengklik tombol share", function () {
     it("muncul opsi untuk share produk", async function () {
       await detailProductPage.clickShare();
+      const text = await detailProductPage.getTextByXpath(
+        "//*[@id='root']/div/div/div/div[7]/div/div[1]/div[2]/div[3]/div[1]/div/section/div[1]/h1"
+      );
+      expect(text).to.include("Share to");
     });
   });
 
