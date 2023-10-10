@@ -22,8 +22,8 @@ class MemberPage extends Page() {
     "//*[@id='root']/div/div/div/div[7]/div/div[2]/div[1]/div[4]"
   );
 
-  async openUrl() {
-    this.openUrl();
+  async openPage() {
+    this.openUrl("/member/order");
   }
 
   async openMemberOrder() {
@@ -33,12 +33,16 @@ class MemberPage extends Page() {
   }
 
   async openMemberWishlist() {
-    await this.driver.findElement(this.wishtlistBtnSelector).click;
+    await this.driver.findElement(this.wishtlistBtnSelector).click();
   }
 
-  async openAccountInfo() {}
+  async openAccountInfo() {
+    await this.driver.findElement(this.accountInfoBtnSelector).click();
+  }
 
-  async openAddress() {}
+  async openAddress() {
+    await this.driver.findElement(this.addressBtnSelector).click();
+  }
 
   async performLogout() {
     await this.driver.findElement(this.logoutBtn).click();

@@ -1,4 +1,4 @@
-const { WebDriver } = require("selenium-webdriver");
+const { WebDriver, By } = require("selenium-webdriver");
 const chai = require("chai");
 const setupDriver = require("../utils/setupDriver");
 const Dashboard = require("../page/Dashboard");

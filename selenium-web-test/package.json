@@ -3,7 +3,7 @@
     "testLogin": "mocha --no-timeouts **/FT_001_Login.test.js",
     "testNavBar": "mocha --no-timeouts **/FT_002_NavMenu.test.js",
     "testvisual": "mocha --no-timeouts **/visual.test.js",
-    "teste2e": "mocha --no-timeouts **/with_login.test.js"
+    "teste2e": "mocha --no-timeouts **/checkout.test.js"
   },
   "dependencies": {
     "chai-image": "^3.0.0",

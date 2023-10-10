@@ -5,6 +5,7 @@ const LoginPage = require("../page/LoginPage.js");
 const Dashboard = require("../page/Dashboard");
 const DetailProductPage = require("../page/DetailProductPage");
 const CheckoutPage = require("../page/CheckoutPage");
+const MemberPage = require("../page/MemberPage");
 
 const expect = chai.expect;
 
@@ -14,6 +15,7 @@ describe("heymale.id e2e test", function () {
   /** @type {Dashboard} */ let dashboard;
   /** @type {DetailProductPage} */ let detailProductPage;
   /** @type {CheckoutPage} */ let checkoutPage;
+  /** @type {MemberPage} */ let memberPage;
 
   before(async function () {
     driver = await setupDriver();
@@ -21,6 +23,7 @@ describe("heymale.id e2e test", function () {
     dashboard = new Dashboard(driver);
     detailProductPage = new DetailProductPage(driver);
     checkoutPage = new CheckoutPage(driver);
+    memberPage = new MemberPage(driver);
   });
 
   describe("proses Login", function () {
@@ -64,6 +67,13 @@ describe("heymale.id e2e test", function () {
         await checkoutPage.paymentProcess();
         const url = await driver.getCurrentUrl();
         expect(url).to.equal("https://heymale.id/checkout");
+      });
+    });
+
+    describe("melakukan Logout", function () {
+      it("berhasil melakukan Logout", async function () {
+        await memberPage.openPage();
+        await memberPage.performLogout();
       });
     });
   });

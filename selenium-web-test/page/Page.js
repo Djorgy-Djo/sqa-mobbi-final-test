@@ -1,4 +1,4 @@
-const { WebDriver } = require("selenium-webdriver");
+const { WebDriver, By } = require("selenium-webdriver");
 
 class Page {
   constructor(driver) {
@@ -7,6 +7,16 @@ class Page {
 
   async openUrl(path = "/") {
     await this.driver.get("https://heymale.id" + path);
+  }
+
+  async getTextByCss(selector) {
+    return await this.driver.findElement(By.css(selector)).getText();
+  }
+
+  async getAttributeByCss(selector, attribute) {
+    return await this.driver
+      .findElement(By.css(selector))
+      .getAttribute(attribute);
   }
 }
 
